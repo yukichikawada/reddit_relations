@@ -3,6 +3,9 @@ class User < ApplicationRecord
   validates :username, :password_digest, :session_token, presence: true
   before_validation :ensure_token
 
+  has_many :subs
+  has_many :posts
+
   attr_reader :password
 
   def ensure_token
