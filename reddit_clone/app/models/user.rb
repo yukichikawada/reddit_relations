@@ -3,8 +3,13 @@ class User < ApplicationRecord
   validates :username, :password_digest, :session_token, presence: true
   before_validation :ensure_token
 
-  has_many :subs
-  has_many :posts
+  has_many :subs,
+    foreign_key: :moderator,
+    class_name: :Sub
+
+  has_many :posts,
+    foreign_key: :author,
+    class_name: :Post
 
   attr_reader :password
 
@@ -33,7 +38,6 @@ class User < ApplicationRecord
     if user && user.is_password?(password)
       user
     else
-      flash[:errors] = user.errors.full_messages
       nil
     end
   end

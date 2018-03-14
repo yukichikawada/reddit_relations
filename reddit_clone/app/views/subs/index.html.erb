@@ -1,2 +1,8 @@
-<h1>Subs#index</h1>
-<p>Find me in app/views/subs/index.html.erb</p>
+<h2>All Subs</h2>
+
+<%= link_to "Create a Sub", new_sub_url %>
+
+<% @cats.each do |cat| %>
+  <h3><%= link_to cat.title, sub_url(cat) %></h3>
+  <h4><%= cat.description %></h4>
+<% end %>

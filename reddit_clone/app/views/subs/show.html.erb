@@ -1,2 +1,17 @@
-<h1>Subs#show</h1>
-<p>Find me in app/views/subs/show.html.erb</p>
+<%= @cat.title %>
+<%= @cat.description %>
+<%= @cat.user.username %>
+
+<form action="<%= posts_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
+  <label>Title
+    <input type="text" name="post[title]" value="">
+  </label>
+  <input type="hidden" name="post[sub_id]" value="<%= @cat.id %>">
+
+  <input type="submit" name="" value="POST">
+</form>
+
+<% @cat.posts.each do |post| %>
+  post.title
+<% end %>

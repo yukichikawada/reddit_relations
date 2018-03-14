@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
 
     if user
       login(user)
-      render plain: 'Good job'
+      redirect_to subs_url
     else
       flash[:errors] = ["Invalid creds"]
-      render plain: 'Bad job'
+      render :new
     end
   end
 end

@@ -8,17 +8,17 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-      @current_user ||= User.find_by(session_token: session[:token])
+      @current_user ||= User.find_by(session_token: session[:session_token])
   end
 
   def login(user)
     @current_user = user
-    @current_user.session_token = user.reset_token
+    session[:session_token] = user.reset_token
   end
 
   def logout
     current_user.reset_token
-    session[:session_token] = nil
+    session[:token] = nil
   end
 
   def require_login

@@ -5,8 +5,7 @@ class UsersController < ApplicationController
 
     if user.save
       login(user)
-      # redirect to subs_url
-      render plain: 'Good job'
+      redirect to subs_url
     else
       flash[:errors] = user.errors.full_messages
       render :new
